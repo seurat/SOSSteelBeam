@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.solutions.secondorder.SOSSteelBeamLite"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 9
+        versionName "1.8"
+    }
+
+    signingConfigs {
+
+        release {
+
+            storeFile file('release.jks')
+            storePassword "Rtk1999"
+            keyAlias "Second Order Solution"
+            keyPassword "Rtk1999"
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    productFlavors {
+
+        SOSLite {
+            applicationId 'com.solutions.secondorder.SOSSteelBeamLite'
+        }
+
+        SOSLiteDev {
+            applicationId 'com.solutions.secondorder.SOSSteelBeamLite.dev'
+        }
+
+        SOSHistorical {
+            applicationId 'com.solutions.secondorder.SOSHistoricalSteelBeam'
+        }
+
+        SOSHistoricalDev {
+            applicationId 'com.solutions.secondorder.SOSHistoricalSteelBeam.dev'
+        }
+
+    }
+    sourceSets {
+        SOSHistoricalDev {
+            java.srcDirs = ['src/SOSHistorical/java']
+            res.srcDirs = ['src/SOSHistorical/res']
+            assets.srcDirs = ['src/SOSHistorical/assets']
+        }
+
+
+    }
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+}

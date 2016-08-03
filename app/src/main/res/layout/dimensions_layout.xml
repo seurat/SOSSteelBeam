@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blacktexture">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:background ="@drawable/background02">
+        <LinearLayout
+            android:id="@+id/widget128"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/grey_background_piece"
+            android:layout_weight=".1">
+
+            <com.solutions.secondorder.SOSSteelBeamLite.NavigationView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:numDots="ThreeDots"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/dark_background_piece"
+            android:layout_weight=".373"
+            >
+            <ImageButton
+                android:id="@+id/label"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".25"
+                android:gravity="center"
+                android:clickable="true"
+                android:background="@null"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/text_dimensions"
+                />
+            <ImageButton
+                android:id="@+id/image_detail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".8"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/icon_horizontal_margin"
+                android:clickable="true"
+                android:background="@null"
+                android:src="@drawable/image_c_detail"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                />
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/sections_table"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".527"
+            android:layout_gravity="center_vertical">
+            <com.solutions.secondorder.SOSSteelBeamLite.ClipboardView
+                android:id="@+id/clipboard_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </com.solutions.secondorder.SOSSteelBeamLite.ClipboardView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

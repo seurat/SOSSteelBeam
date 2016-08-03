@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu"
+    android:background="@drawable/blacktexture"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:background ="@drawable/background02">
+
+        <com.solutions.secondorder.SOSSteelBeamLite.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" android:layout_weight=".01" app:numDots="OneDot"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/dark_background_piece"
+            android:layout_weight=".373"
+            >
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".10"/>
+                <!--Note: layout_weights are at their most predictable when
+                used with empty linear layouts.
+                The fewer attri-->
+            <ImageButton
+                android:id="@+id/shapes"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".375"
+                android:layout_gravity = "center"
+                android:padding="@dimen/icon_horizontal_margin"
+                android:clickable="true"
+                android:background="@null"
+                android:src="@drawable/button_menu"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                />
+            <ImageButton
+                android:id="@+id/about"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".125"
+                android:padding="@dimen/icon_horizontal_margin"
+                android:clickable="true"
+                android:onClick="about"
+                android:background="@null"
+                android:src="@drawable/button_about"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".527">
+            <ImageButton
+                android:id="@+id/menu_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:background="@null"
+                android:src="@drawable/menu_image"
+                android:scaleType="fitCenter"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+    <!--
+    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10.5dp"
+    android:id="@+id/shapes"
+    android:clickable="true"
+    android:textScaleX=".902"
+    android:text="SHAPES"
+    android:textColor="#ffffff"
+    android:fontFamily="Arial"
+    android:gravity="center_vertical"
+    android:onClick="MenuButtons"
+    android:textSize="35dp"
+        />
+    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10.5dp"
+    android:id="@+id/sections"
+    android:clickable="true"
+    android:textScaleX=".902"
+    android:text="SECTIONS"
+    android:textColor="#ffffff"
+    android:fontFamily="Arial"
+    android:textSize="36dp"
+    android:gravity="center_vertical"
+    android:onClick="MenuButtons"
+    android:layout_below="@id/shapes" />
+    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="8.3dp"
+    android:id="@+id/dimensions"
+    android:clickable="true"
+    android:textScaleX=".902"
+    android:text="DIMENSIONS"
+    android:textColor="#ffffff"
+    android:fontFamily="Arial"
+    android:textSize="35.5dp"
+    android:gravity="center_vertical"
+    android:layout_below="@id/sections"
+        />
+    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="8.3dp"
+    android:id="@+id/properties"
+    android:clickable="true"
+    android:textScaleX=".902"
+    android:text="PROPERTIES"
+    android:textColor="#ffffff"
+    android:fontFamily="Arial"
+    android:gravity="bottom"
+    android:textSize="37dp"
+    android:layout_below="@id/dimensions"
+        />-->

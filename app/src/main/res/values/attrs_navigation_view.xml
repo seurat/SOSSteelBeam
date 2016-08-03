@@ -1,0 +1,12 @@
+<resources>
+    <attr name="numDots" format="enum">
+        <enum name="NoDots" value="0"/>
+        <enum name="OneDot" value="1"/>
+        <enum name="TwoDots" value="2"/>
+        <enum name="ThreeDots" value="3"/>
+        <enum name="FourDots" value="4"/>
+    </attr>
+    <declare-styleable name="NavigationView">
+        <attr name="numDots"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="ScaledImageView">
+        <attr name="image_id" format="reference" />
+    </declare-styleable>
+</resources>
