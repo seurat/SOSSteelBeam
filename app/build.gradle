@@ -8,18 +8,18 @@ android {
         applicationId "com.solutions.secondorder.SOSSteelBeamLite"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 9
-        versionName "1.8"
+        versionCode 11
+        versionName "1.91"
     }
 
     signingConfigs {
 
         release {
 
-            storeFile file('release.jks')
-            storePassword "Rtk1999"
-            keyAlias "Second Order Solution"
-            keyPassword "Rtk1999"
+            storeFile file('sos.jks')
+            storePassword "Rtk.1999"
+            keyAlias "Second Order Solutions"
+            keyPassword "Rtk.1999"
         }
     }
 
@@ -32,34 +32,6 @@ android {
         }
     }
 
-    productFlavors {
-
-        SOSLite {
-            applicationId 'com.solutions.secondorder.SOSSteelBeamLite'
-        }
-
-        SOSLiteDev {
-            applicationId 'com.solutions.secondorder.SOSSteelBeamLite.dev'
-        }
-
-        SOSHistorical {
-            applicationId 'com.solutions.secondorder.SOSHistoricalSteelBeam'
-        }
-
-        SOSHistoricalDev {
-            applicationId 'com.solutions.secondorder.SOSHistoricalSteelBeam.dev'
-        }
-
-    }
-    sourceSets {
-        SOSHistoricalDev {
-            java.srcDirs = ['src/SOSHistorical/java']
-            res.srcDirs = ['src/SOSHistorical/res']
-            assets.srcDirs = ['src/SOSHistorical/assets']
-        }
-
-
-    }
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

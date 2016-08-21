@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SOSSkeleton.iml" filepath="$PROJECT_DIR$/SOSSkeleton.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sossteelbeamsuite.iml" filepath="$PROJECT_DIR$/sossteelbeamsuite.iml" />
     </modules>
   </component>
 </project>
