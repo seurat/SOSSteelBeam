@@ -35,4 +35,9 @@ public class PropertiesActivity extends Activity implements AttributeProvider{
 
     public void screenDispatch(int button){}
 
+    public String getDatabaseName() {
+        return ((SOSSteelBeamsApplication) getApplication()).getDatabaseName();
+    }
+
+
 }

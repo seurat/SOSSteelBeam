@@ -12,4 +12,5 @@ public interface AttributeProvider {
     //flag; true if section is hss_sqr.
     public boolean isHSSSqr();
     public void goBack();
+    public String getDatabaseName();
 }

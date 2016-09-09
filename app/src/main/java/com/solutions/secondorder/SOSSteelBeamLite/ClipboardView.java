@@ -2,6 +2,7 @@ package com.solutions.secondorder.SOSSteelBeamLite;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.database.DataSetObserver;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -28,8 +29,6 @@ public class ClipboardView extends LinearLayout {
     String TAG = "ClipboardView";
     String infService = Context.LAYOUT_INFLATER_SERVICE;
     Keys keys = Keys.getInstance();
-
-
     DatabaseHelper dbHelper;
     DataSetObserver observer;
     ArrayAdapter<String> adapter;
@@ -40,6 +39,7 @@ public class ClipboardView extends LinearLayout {
     ImageView var1_iv, var2_iv;
     String var1, var2;
     String section;
+    String databaseName;
     EditText d1, d2;
     ListView list_beams_lv;
 
@@ -47,6 +47,7 @@ public class ClipboardView extends LinearLayout {
         super(context);
         this.context = context;
         dimensionsActivity = (AttributeProvider) context;
+        databaseName = dimensionsActivity.getDatabaseName();
         init(null, 0);
 
     }
@@ -55,6 +56,7 @@ public class ClipboardView extends LinearLayout {
         super(context, attrs);
         this.context = context;
         dimensionsActivity = (AttributeProvider) context;
+        databaseName = dimensionsActivity.getDatabaseName();
         init(attrs, 0);
 
     }
@@ -63,6 +65,7 @@ public class ClipboardView extends LinearLayout {
         super(context, attrs, defStyleAttr);
         this.context = context;
         dimensionsActivity = (AttributeProvider) context;
+        databaseName = dimensionsActivity.getDatabaseName();
         init(attrs, defStyleAttr);
 
     }
@@ -149,8 +152,15 @@ public class ClipboardView extends LinearLayout {
         d2 = (EditText) findViewById(R.id.d2);
         //List of labels for beams
         list_beams_lv = (ListView) findViewById(R.id.list_beams_lv);
+        AssetManager am = (AssetManager) context.getAssets();
+        try {
+            am.open("Historical.sqlite");
+        } catch(IOException ioe) {
+            Log.e(TAG,"Can't find database "+keys.convertRecordNameToDBName(databaseName));
+        }
 
-        dbHelper = new DatabaseHelper(context.getApplicationContext());
+        dbHelper = new DatabaseHelper(context.getApplicationContext(), "Historical.sqlite");
+        Log.e(TAG, databaseName);
         try {
             dbHelper.createDataBase();
         } catch (IOException e) {

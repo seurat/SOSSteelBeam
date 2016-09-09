@@ -39,4 +39,8 @@ public class DimensionsActivity extends Activity implements AttributeProvider {
     public boolean isHSSSqr() {
         return isHSSSqr;
     }
+
+    public String getDatabaseName() {
+        return ((SOSSteelBeamsApplication) getApplication()).getDatabaseName();
+    }
 }

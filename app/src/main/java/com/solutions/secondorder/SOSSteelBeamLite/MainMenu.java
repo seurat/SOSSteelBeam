@@ -29,7 +29,8 @@ public class MainMenu extends Activity implements View.OnClickListener {
         Intent intent;
         switch(v.getId()) {
             case R.id.shapes:
-                intent = new Intent(this, ShapesActivity.class);
+                //intent = new Intent(this, ShapesActivity.class);
+                intent = new Intent(this, DatabaseActivity.class);
                 startActivity(intent);
                 Log.e(TAG, "SHAPES");
                 break;

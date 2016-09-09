@@ -25,6 +25,44 @@ public class Keys {
     //any numbers regarding measurements such as lookup range in inches
     double lookupRange = .125;
 
+    String[] arrayDatabases = {"AISC14.1 (2013)","AISC13 (2005)","ASD9 (1989)","Historical (1873-1952)",
+            "ASD5 (1962)", "LRFD1 (1986)", "ASD6 (1964)",
+            "LRFD2 (1994)", "ASD7 (1970)", "LRFD3 (2001)",
+            "ASD8 (1980)"};
+
+    /**
+     * takes labels from DatabaseActivity screen and returns file name of corresponding database.
+     * @return
+     */
+    public String convertRecordNameToDBName(String label) {
+        switch(label) {
+            case "AISC14.1 (2013)":
+                return "AISC14.1";
+            case "AISC13 (2005)":
+                return "AISC13";
+            case "ASD9 (1989)":
+                return "ASD9";
+            case "Historical (1873-1952)":
+                return "Historical";
+            case "ASD5 (1962)":
+                return "ASD5";
+            case "LRFD1 (1986)":
+                return "LRFD1";
+            case "ASD6 (1964)":
+                return "ASD6";
+            case "LRFD2 (1994)":
+                return "LRFD2";
+            case "ASD7 (1970)":
+                return "ASD7";
+            case "LRFD3 (2001)":
+                return "LRFD3";
+            case "ASD8 (1980)":
+                return "ASD8";
+            default:
+                return "";
+        }
+    }
+
     //Stringified versions of same
     String lookupRangeSQL = String.valueOf(lookupRange);
 
@@ -35,7 +73,7 @@ public class Keys {
     String intent_dimensions = "dimensions";
     String intent_dimensions_sqr_flag = "dimensions hss_sqr flag";
     String intent_properties = "properties";
-
+    String intent_databases = "database";
     //Shape Family Names
     String i_shape = "i";
     String tube_shape = "tube";

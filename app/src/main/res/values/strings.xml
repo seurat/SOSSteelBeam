@@ -9,6 +9,7 @@
     <string name="label_activity_title">Title Screen</string>
     <string name="label_activity_main_menu">Main Menu</string>
     <string name="title_activity_sossteel_beams">SOS Steel Beam</string>
+    <string name="label_activity_databases">DatabasesActivity</string>
     <string name="title_activity_sections">SectionsActivity</string>
     <string name="title_activity_dimensions">DimensionsActivity</string>
     <string name="title_activity_properties">PropertiesActivity</string>

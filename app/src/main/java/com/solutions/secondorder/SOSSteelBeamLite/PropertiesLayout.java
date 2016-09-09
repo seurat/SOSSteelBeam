@@ -69,7 +69,7 @@ public class PropertiesLayout extends LinearLayout {
 
 
 
-        dbHelper = new DatabaseHelper(context.getApplicationContext());
+        dbHelper = new DatabaseHelper(context.getApplicationContext(), propertiesActivity.getDatabaseName());
         properties = "W, A, d, b t, kdes, kdet, x, y, xp, yp, Ix, "+
                 "Zx, Sx, rx, Iy, Zy, Iz, Sy, ry, Iz, rz, Sz, J, Cw, ro, H, "+
                 "Qs, Iw, zA, zC, wA, wB, wC, SwA, SwC, SzA, SzB, SzC";

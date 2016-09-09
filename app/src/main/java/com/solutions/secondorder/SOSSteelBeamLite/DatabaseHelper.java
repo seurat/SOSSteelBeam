@@ -28,7 +28,8 @@ import java.util.ListIterator;
 public class DatabaseHelper extends SQLiteOpenHelper {
     public String TAG = "DatabaseHelper";
     public String DB_PATH = "";
-    public static String DB_NAME = "AISCShapesDetail.sqlite";
+    public String DB_NAME;// = "AISCShapesDetail.sqlite";
+    public static String DB_CHOICE;
     private Keys keys = Keys.getInstance();
 
     /**
@@ -46,20 +47,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      *NOTE: The version number CANNOT go down, or SQLite will inform you that you can't downgrade.
      *
      */
-    public static final int DB_VERSION = 4;
+    public static final int DB_VERSION = 6;
     /**
      * Note: if the table or column name includes a space, surround the name with 'escaped' double quotes
      * This instructs the database service to read the string as a whole instead of stopping at a space.
      * To 'escape' a double quote, precede with a \
      */
-    public static final String TB_USER = "BeamTable";
+    public static String TB_USER = "BeamTable";
 
     private SQLiteDatabase myDB;
 
     private Context context;
 
-    public DatabaseHelper(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);// 1? Its database Version
+    public DatabaseHelper(Context context, String databaseName) {
+        super(context, databaseName, null, DB_VERSION);// 1? Its database Version
+        DB_CHOICE = databaseName;
+        DB_NAME = DB_CHOICE;
         if(android.os.Build.VERSION.SDK_INT >= 17){
             DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
         }
@@ -343,10 +346,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             // Therefore the value I put in is \"W44X335\", not W44X335.
             //Additionally, if I'm using the LIKE clause, and I'm describing a text entry in a column
             //That entry must be surrounded by single quotes. For instance, look up 'W', not W.
-
             //TODO Collect information from multiple rows and columns in a query.
             String sectionQuery = keys.specifySectionString(section);
-            c = db.rawQuery("SELECT Section FROM " + TB_USER + " " + sectionQuery , null);
+            //c = db.rawQuery("SELECT Section FROM " + TB_USER + " " + sectionQuery , null);
+            c = db.rawQuery("SELECT Section FROM " + TB_USER, null);
             Log.e(TAG, "SELECT Section FROM " + TB_USER + " " + sectionQuery);
             if (c == null) {
                 Log.e(TAG, "CURSOR NOT FOUND");
@@ -480,7 +483,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //TODO Collect information from multiple rows and columns in a query.
         try {
             c = db.rawQuery("SELECT Shape FROM " + TB_USER + " WHERE Section LIKE " + "\'%" + beamLabel + "%\'", null);
-            //Log.e("ShapeByBeamLabel", "SELECT Shape FROM " + TB_USER + " WHERE Section LIKE " + "\'%" + beamLabel + "%\'");
+            Log.e("ShapeByBeamLabel", "SELECT Shape FROM " + TB_USER + " WHERE Section LIKE " + "\'%" + beamLabel + "%\'");
             if (c == null) {
                 Log.e(TAG, "CURSOR NOT FOUND");
                 return null;
