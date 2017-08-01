@@ -28,7 +28,7 @@ import java.util.ListIterator;
 public class DatabaseHelper extends SQLiteOpenHelper {
     public String TAG = "DatabaseHelper";
     public String DB_PATH = "";
-    public String DB_NAME;// = "AISCShapesDetail.sqlite";
+    public String DB_NAME;// = "AISCShapesDetail ().sqlite";
     public static String DB_CHOICE;
     private Keys keys = Keys.getInstance();
 
@@ -204,6 +204,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return listItems;
     }
+
+    public List<String> getThoseItemsByArgs(String shape, String queryBody) {
+        List<String> listItems = new ArrayList<String>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c;
+        String sectionQuery = keys.sqlSectionsString(shape);
+        try {
+            if(queryBody.equals("")) {
+                c = db.rawQuery("SELECT Section FROM " + TB_USER + " " + sectionQuery, null);
+                Log.e(TAG, "getThoseItemsByArgs SELECT Section FROM " + TB_USER + " " + sectionQuery);
+                if (c == null) {
+                    Log.e(TAG, "CURSOR NOT FOUND");
+                    return null;
+                }
+            }
+            else {
+                Log.e(TAG, "getThoseItemsByArgs "+sectionQuery);
+                c = db.rawQuery("SELECT Section FROM " + TB_USER + " " + sectionQuery+" "+queryBody, null);
+                Log.e(TAG, "getThoseItemsByArgs SELECT Section FROM " + TB_USER + " " + sectionQuery+" "+queryBody);
+                if(c == null) {
+                    Log.e(TAG, "CURSOR NOT FOUND");
+                    return null;
+                }
+            }
+            String beam;
+            c.moveToFirst();
+            do {
+                beam = c.getString(0);
+                listItems.add(beam);
+            } while (c.moveToNext());
+            c.close();
+        } catch(Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
+        db.close();
+        return listItems;
+    }
+
     /**
      * The next three methods are used to create queries if one of the two textboxes is left blank. Both will cover situation if other textbox is also blank.
      */
@@ -318,7 +356,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String name;
             c.moveToFirst();
             do {
-                name = c.getString(0);
+                name = c.getString(0).trim();
                 listItems.add(name);
             } while (c.moveToNext());
             c.close();
@@ -332,7 +370,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return listItems;
     }
 
-    public List<String> getAllItems(String section) {
+    public List<String> getAllItems(String shape) {
         List<String> listUsers = new ArrayList<String>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c;
@@ -346,10 +384,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             // Therefore the value I put in is \"W44X335\", not W44X335.
             //Additionally, if I'm using the LIKE clause, and I'm describing a text entry in a column
             //That entry must be surrounded by single quotes. For instance, look up 'W', not W.
+            //tl;dr LIKE takes strings which are defined with single quotes; operands take double quotes.
             //TODO Collect information from multiple rows and columns in a query.
-            String sectionQuery = keys.specifySectionString(section);
+            String sectionQuery = keys.sqlSectionsString(shape);
             //c = db.rawQuery("SELECT Section FROM " + TB_USER + " " + sectionQuery , null);
-            c = db.rawQuery("SELECT Section FROM " + TB_USER, null);
+            c = db.rawQuery("SELECT Section FROM " + TB_USER + " " + sectionQuery, null);
             Log.e(TAG, "SELECT Section FROM " + TB_USER + " " + sectionQuery);
             if (c == null) {
                 Log.e(TAG, "CURSOR NOT FOUND");
@@ -358,7 +397,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String name;
             c.moveToFirst();
             do {
-                name = c.getString(0);
+                name = c.getString(0).trim();
                 listUsers.add(name);
             } while (c.moveToNext());
             c.close();
@@ -445,20 +484,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             //following Stackoverflow page
             //http://stackoverflow.com/questions/10723770/whats-the-best-way-to-iterate-an-android-cursor
             //There is a peculiar relationship between OOD and Android Activities
-            while(c.moveToFirst()||c.moveToNext()) {
+
+            while((c.moveToFirst()||c.moveToNext())&&i<c.getColumnCount()) {
 
                 String property = c.getColumnName(i);
+                if(c.isNull(i)) {
+                    i += 1;
+                    continue;
+                }
                 String value = c.getString(c.getColumnIndex(property));
                 data = property + " = " + value;
                 listProps.add(data);
+                Log.e(TAG, " column "+i+" of "+c.getColumnCount());
                 i+=1;
 
             }
             c.close();
         } catch (Exception e) {
-            Log.e(TAG, "Could not get data on " + key);
+            Log.e(TAG, "Could not get data on " + key+ " "+e.getMessage());
 
         }
+
+        Log.e(TAG, listProps.size()+" ");
         ListIterator<String> li = listProps.listIterator();
         String a = "";
         //Must initialize list iterator loop by using li.next()

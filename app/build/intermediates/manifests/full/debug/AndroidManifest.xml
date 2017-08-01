@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.solutions.secondorder.SOSSteelBeamLite"
+    android:versionCode="13"
+    android:versionName="1.96" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="24" />
+
+    <application
+        android:name="com.solutions.secondorder.SOSSteelBeamLite.SOSSteelBeamsApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.solutions.secondorder.SOSSteelBeamLite.SOSSteelBeams"
+            android:label="@string/title_activity_sossteel_beams"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.solutions.secondorder.SOSSteelBeamLite.MainMenu"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.solutions.secondorder.SOSSteelBeamLite.ShapesActivity"
+            android:label="@string/title_activity_shapes"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.solutions.secondorder.SOSSteelBeamLite.DatabaseActivity"
+            android:label="@string/label_activity_databases"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.solutions.secondorder.SOSSteelBeamLite.SectionsActivity"
+            android:label="@string/title_activity_sections"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.solutions.secondorder.SOSSteelBeamLite.DimensionsActivity"
+            android:label="@string/title_activity_dimensions"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.solutions.secondorder.SOSSteelBeamLite.PropertiesActivity"
+            android:label="@string/title_activity_properties"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.solutions.secondorder.SOSSteelBeamLite.ContactUs"
+            android:label="@string/title_activity_contact_us"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

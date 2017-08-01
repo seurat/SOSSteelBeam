@@ -1,0 +1,68 @@
+[
+    {
+        "outputFile": "/Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 11,
+                    "endColumn": 11,
+                    "endOffset": 356
+                },
+                "from": {
+                    "file": "/Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/res/values-w820dp/attrs_sections_layout.xml",
+                    "position": {
+                        "startLine": 1,
+                        "startColumn": 4,
+                        "startOffset": 16,
+                        "endLine": 10,
+                        "endColumn": 11,
+                        "endOffset": 317
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 361,
+                    "endLine": 14,
+                    "endColumn": 24,
+                    "endOffset": 454
+                },
+                "from": {
+                    "file": "/Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/res/values-w820dp/attrs_sections_layout.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 322,
+                        "endLine": 13,
+                        "endColumn": 24,
+                        "endOffset": 415
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 459,
+                    "endColumn": 57,
+                    "endOffset": 512
+                },
+                "from": {
+                    "file": "/Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/res/values-w820dp/dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 291,
+                        "endColumn": 57,
+                        "endOffset": 344
+                    }
+                }
+            }
+        ]
+    }
+]

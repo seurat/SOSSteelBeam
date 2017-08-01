@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="enum" name="shape">
+        <enum name="t" value="0"/>
+        <enum name="i" value="1"/>
+        <enum name="l" value="2"/>
+        <enum name="tube" value="3"/>
+        <enum name="c" value="4"/>
+        <enum name="two_l" value="5"/>
+        <enum name="pipe" value="6"/>
+
+    </attr>
+    <declare-styleable name="ShapesLayout">
+        <attr name="shape"/>
+    </declare-styleable>
+    <dimen name="activity_horizontal_margin">64dp</dimen>
+</resources>

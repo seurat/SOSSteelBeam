@@ -56,4 +56,8 @@ public class ScaledImageView extends ImageView {
         super.onDraw(canvas);
     }
 
+    public void changeImageResource(int image_id) {
+        this.setImageResource(image_id);
+    }
+
 }

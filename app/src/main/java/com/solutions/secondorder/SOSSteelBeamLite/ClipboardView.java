@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Created by Rani on 3/8/2016.
  */
-public class ClipboardView extends LinearLayout {
+public class ClipboardView extends LinearLayout implements View.OnKeyListener {
 
     String TAG = "ClipboardView";
     String infService = Context.LAYOUT_INFLATER_SERVICE;
@@ -36,12 +36,16 @@ public class ClipboardView extends LinearLayout {
 
     Context context;
     AttributeProvider dimensionsActivity;
-    ImageView var1_iv, var2_iv;
-    String var1, var2;
+    LinearLayout var1_ll, var2_ll, var3_ll;
+    ImageView var1_iv, var2_iv, var3_iv;
+    String var1, var2, var3;
+    String variables[];
     String section;
     String databaseName;
-    EditText d1, d2;
+    EditText d1, d2, d3;
     ListView list_beams_lv;
+    List<String> sections;
+    boolean e1, e2, e3;
 
     public ClipboardView(Context context) {
         super(context);
@@ -78,19 +82,28 @@ public class ClipboardView extends LinearLayout {
         li = (LayoutInflater) getContext().getSystemService(infService);
         li.inflate(R.layout.clipboard_view, this, true);
 
+
+
+
         //Variable imageViews for dimensions
         var1_iv = (ImageView) findViewById(R.id.var1);
         var2_iv = (ImageView) findViewById(R.id.var2);
+        var3_iv = (ImageView) findViewById(R.id.var3);
+
+        var3_ll = (LinearLayout) findViewById(R.id.third_dimension);
 
         section = dimensionsActivity.getAttributeFromActivity();
         //if button pressed was hss square, then view should interpret that as another instance of hssr.
         //messy but necessary to accomodate 'artificial' sections (called shapes in the table) that aren't among table properties.
 
+        //The string 'section' for now refers to what is actually the Shape of the beam (with respect to what the database calls it)
         Log.e(TAG, "Shape is " + section);
-
-        String shape = keys.shapeInterpreter(section);
+        sections = keys.getSectionsFromShape(section);
         //TODO figure out where these activities are getting generated from so I can make use of these views.
-        switch (shape) {
+        //refer to Key value for that code set for each variable. Ahaaaaa...
+        //ALSO: if a textview is invisible then its string value will always be blank therefore you need to do nothing about discounting it.
+        //bizarre: class members not considered globally accessible if instantiated by switch statement unless instantiated in every contingency.
+        switch (section) {
             case "i":
                 //i
                 //sections_table = (TableLayout) findViewById(R.id.sections_table);
@@ -99,6 +112,13 @@ public class ClipboardView extends LinearLayout {
                 //Note: swap this with bf_dim when you get it.
                 var2_iv.setImageResource(R.drawable.text_bf_dim);
                 var2 = "bf";
+                var3_iv.setImageResource(R.drawable.text_tf);
+                var3 = "tf";
+                //Order of variables has to synch with order of their corresponding boxes in the UI; or use a hashtable.
+                variables = new String[3];
+                variables[0] = var1;
+                variables[1] = var2;
+                variables[2] = var3;
                 break;
             case "tube":
                 var1 = "ht";
@@ -106,6 +126,12 @@ public class ClipboardView extends LinearLayout {
                 //insert ht dimension when you get the chance.
                 var2_iv.setImageResource(R.drawable.text_b_dim);
                 var2 = "b";
+                var3_iv.setImageResource(R.drawable.text_tnom_dim);
+                var3 = "tnom";
+                variables = new String[3];
+                variables[0] = var1;
+                variables[1] = var2;
+                variables[2] = var3;
                 break;
             case "pipe":
                 //pipe subsection in tube
@@ -114,6 +140,11 @@ public class ClipboardView extends LinearLayout {
                 //change image to tnom
                 var2_iv.setImageResource(R.drawable.text_tnom_dim);
                 var2 = "tnom";
+                var3_ll.setVisibility(View.GONE);
+                var3 = "no variable";
+                variables = new String[2];
+                variables[0] = var1;
+                variables[1] = var2;
                 break;
             case "c":
                 //c
@@ -121,6 +152,12 @@ public class ClipboardView extends LinearLayout {
                 var1 = "d";
                 var2_iv.setImageResource(R.drawable.text_bf_dim);
                 var2 = "bf";
+                var3_iv.setImageResource(R.drawable.text_tf);
+                var3 = "tf";
+                variables = new String[3];
+                variables[0] = var1;
+                variables[1] = var2;
+                variables[2] = var3;
                 break;
             case "t":
                 //t
@@ -128,6 +165,12 @@ public class ClipboardView extends LinearLayout {
                 var1 = "d";
                 var2_iv.setImageResource(R.drawable.text_bf_dim);
                 var2 = "bf";
+                var3_iv.setImageResource(R.drawable.text_tf);
+                var3 = "tf";
+                variables = new String[3];
+                variables[0] = var1;
+                variables[1] = var2;
+                variables[2] = var3;
                 break;
             case "l":
                 //l
@@ -135,6 +178,12 @@ public class ClipboardView extends LinearLayout {
                 var1 = "d";
                 var2_iv.setImageResource(R.drawable.text_b_one_dim);
                 var2 = "b_1";
+                var3_iv.setImageResource(R.drawable.text_t);
+                var3 = "t";
+                variables = new String[3];
+                variables[0] = var1;
+                variables[1] = var2;
+                variables[2] = var3;
                 break;
             case "2l":
                 //two l subsection in t
@@ -142,24 +191,39 @@ public class ClipboardView extends LinearLayout {
                 var1 = "d";
                 var2_iv.setImageResource(R.drawable.text_b_one_dim);
                 var2 = "b_1";
+                var3_iv.setImageResource(R.drawable.text_t);
+                var3 = "t";
+                variables = new String[3];
+                variables[0] = var1;
+                variables[1] = var2;
+                variables[2] = var3;
                 break;
             default:
+                Log.e(TAG, section + " does not exist.");
+                var1 = "no valid shape";
+                var2 = "no valid shape";
+                var3 = "no valid shape";
+                variables = new String[3];
+                variables[0] = var1;
+                variables[1] = var2;
+                variables[2] = var3;
+
                 break;
         }
 
         //EditTexts for dimensions
         d1 = (EditText) findViewById(R.id.d1);
         d2 = (EditText) findViewById(R.id.d2);
+        d3 = (EditText) findViewById(R.id.d3);
+
+        d1.setOnKeyListener(this);
+        d2.setOnKeyListener(this);
+        d3.setOnKeyListener(this);
+
         //List of labels for beams
         list_beams_lv = (ListView) findViewById(R.id.list_beams_lv);
-        AssetManager am = (AssetManager) context.getAssets();
-        try {
-            am.open("Historical.sqlite");
-        } catch(IOException ioe) {
-            Log.e(TAG,"Can't find database "+keys.convertRecordNameToDBName(databaseName));
-        }
-
-        dbHelper = new DatabaseHelper(context.getApplicationContext(), "Historical.sqlite");
+        //TODO: get name of database figured out. Need to be able to select the file name that corresponds to the label the user clicked in database.
+        dbHelper = new DatabaseHelper(context.getApplicationContext(), dimensionsActivity.getDatabaseName()+".sqlite");// "Historical.sqlite");
         Log.e(TAG, databaseName);
         try {
             dbHelper.createDataBase();
@@ -174,86 +238,8 @@ public class ClipboardView extends LinearLayout {
         }
 
         //Instead, use more general key listener function instead of individual ones.
-        d1.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // if keydown and "enter" is pressed
-                if ((event.getAction() == KeyEvent.ACTION_DOWN)
-                        && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    InputMethodManager imm = (InputMethodManager)
-                            context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.isFullscreenMode();
-                    imm.hideSoftInputFromWindow(d1.getWindowToken(), 0);
-                    boolean flag1 = d1.getText().length() == 0;
-                    boolean flag2 = d2.getText().length() == 0;
-                    //if both text fields are empty
-                    if (flag1 && flag2) list_beams = dbHelper.getAllItems(section);
-                    //if the first edit text is empty
-                    else if (flag1)
-                            list_beams = dbHelper.getThoseItemsBySecondArg
-                            (keys.specifySectionString(section) +
-                                    keys.specifyDimRangeString(var2, d2.getText().toString()));
-                    //if the second edit text is empty
-                    else if (flag2)
-                            list_beams = dbHelper.getThoseItemsByFirstArg
-                            (keys.specifySectionString(section) +
-                                    keys.specifyDimRangeString(var1, d1.getText().toString()));
-                    //if both are full
-                    else {
-                        list_beams = dbHelper.getThoseItems
-                                (keys.specifySectionString(section)
-                                        + keys.queryByBothString(var1,
-                                                                d1.getText().toString(),
-                                                                var2,
-                                                                d2.getText().toString()));
-                    }
-                    adapter.clear();
-                    adapter.addAll(list_beams);
-                    adapter.notifyDataSetChanged();
-                    return true;
 
-                }
 
-                return false;
-            }
-        });
-
-        d2.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                // if keydown and "enter" is pressed
-                if ((event.getAction() == KeyEvent.ACTION_DOWN)
-                        && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    InputMethodManager imm = (InputMethodManager)
-                            context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(d2.getWindowToken(), 0);
-                    imm.isFullscreenMode();
-                    boolean flag1 = d1.getText().length() == 0;
-                    boolean flag2 = d2.getText().length() == 0;
-                    if (flag1 && flag2) list_beams = dbHelper.getAllItems(section);
-                    else if (flag1 || flag2) {
-                        //What about redundancies? Also Sections
-                        list_beams = dbHelper.getThoseItemsBySecondArg(keys.specifySectionString(section)
-                                + keys.specifyDimRangeString(var2, d2.getText().toString()));
-                        list_beams.addAll(dbHelper.getThoseItemsByFirstArg(keys.specifySectionString(section)
-                                + keys.specifyDimRangeString(var1, d1.getText().toString())));
-                    } else {
-                        list_beams = dbHelper.getThoseItems
-                                (keys.specifySectionString(section)
-                                        + keys.queryByBothString(var1,
-                                                                d1.getText().toString(),
-                                                                var2,
-                                                                d2.getText().toString()));
-                    }
-                    adapter.clear();
-                    adapter.addAll(list_beams);
-                    adapter.notifyDataSetChanged();
-                    return true;
-
-                }
-
-                return false;
-            }
-        });
 
         list_beams_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -262,6 +248,7 @@ public class ClipboardView extends LinearLayout {
                 String beam_label = item.getText().toString();
                 Intent generateProperties = new Intent(context.getApplicationContext(), PropertiesActivity.class);
                 generateProperties.putExtra(keys.intent_dimensions, beam_label);
+                generateProperties.putExtra(keys.intent_shapes, section);
                 if(section.equalsIgnoreCase(keys.hss_sqr_section))
                     generateProperties.putExtra(keys.intent_dimensions_sqr_flag, true);
                 else generateProperties.putExtra(keys.intent_dimensions_sqr_flag, false);
@@ -270,6 +257,59 @@ public class ClipboardView extends LinearLayout {
         });
 
 
+    }
+
+    @Override
+    public boolean onKey(View view, int keyCode, KeyEvent event) {
+        boolean var1IsBlank = d1.getText().toString().length()==0;
+        boolean var2IsBlank = d2.getText().toString().length()==0;
+        boolean var3IsBlank = d3.getText().toString().length()==0;
+        Log.e(TAG, "Is clicked ");
+        /*Log.e(TAG, var1 + (var1IsBlank?":is blank ":":is not blank ")+"\n"
+                +var2+(var2IsBlank?":is blank":":is not blank")+"\n"+
+                var3 + (var3IsBlank?":is blank ":":is not blank ")+"\n");*/
+        boolean blankVariables[] = {var1IsBlank, var2IsBlank, var3IsBlank};
+        String values[] = {d1.getText().toString(), d2.getText().toString(), d3.getText().toString()};
+        switch(view.getId()) {
+            case R.id.d1:
+            case R.id.d2:
+            case R.id.d3:
+                if((event.getAction() == KeyEvent.ACTION_DOWN)&&(keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(d2.getWindowToken(), 0);
+                    imm.isFullscreenMode();
+                    StringBuilder sqlStatementBuilder = new StringBuilder();
+                    if (var1IsBlank && var2IsBlank && var3IsBlank) {
+                        list_beams = dbHelper.getAllItems(section);
+                        adapter.clear();
+                        adapter.addAll(list_beams);
+                        adapter.notifyDataSetChanged();
+                        return true;
+                    } else {
+                        for (int i = 0; i < variables.length; i++) {
+                            if (blankVariables[i]) {
+                                Log.e(TAG, variables[i]+" is blank");
+                                continue;
+                            }
+                            else {
+                                Log.e(TAG, "Querying "+variables[i]);
+                                sqlStatementBuilder.append(" AND ");
+                                sqlStatementBuilder.append(keys.sqlDimRangeString(variables[i], values[i]));
+                            }
+                        }
+                        Log.e(TAG, sqlStatementBuilder.toString());
+                        list_beams = dbHelper.getThoseItemsByArgs(section, sqlStatementBuilder.toString());
+                        Log.e("List Beams", list_beams.toString());
+                        adapter.clear();
+                        adapter.addAll(list_beams);
+                        adapter.notifyDataSetChanged();
+                        return true;
+                    }
+                }
+                break;
+            default: break;
+        }
+        return false;
     }
 //TODO utilize overriding onBackPressed() to control what clicking back in keyboard does
 

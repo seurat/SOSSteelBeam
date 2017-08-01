@@ -1,0 +1,138 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:2:1-60:12
+	package
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:3:5-57
+		INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml
+application
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:5:5-58:19
+MERGED from [com.android.support:design:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/design/24.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.1.1/AndroidManifest.xml:23:5-20
+	android:label
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:9:9-41
+	android:supportsRtl
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:10:9-35
+	android:allowBackup
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:8:9-43
+	android:theme
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:11:9-40
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:7:9-48
+activity#com.solutions.secondorder.SOSSteelBeamLite.SOSSteelBeams
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:12:9-22:20
+	android:screenOrientation
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:15:13-50
+	android:label
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:14:13-66
+	android:theme
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:16:13-56
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:13:13-42
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:17:13-21:29
+action#android.intent.action.MAIN
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:18:17-69
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:18:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:20:17-77
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:20:27-74
+activity#com.solutions.secondorder.SOSSteelBeamLite.MainMenu
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:23:9-26:59
+	android:screenOrientation
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:25:13-50
+	android:theme
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:26:13-56
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:24:13-37
+activity#com.solutions.secondorder.SOSSteelBeamLite.ShapesActivity
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:27:9-31:59
+	android:screenOrientation
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:30:13-50
+	android:label
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:29:13-58
+	android:theme
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:31:13-56
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:28:13-43
+activity#com.solutions.secondorder.SOSSteelBeamLite.DatabaseActivity
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:32:9-36:59
+	android:screenOrientation
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:35:13-50
+	android:label
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:34:13-61
+	android:theme
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:36:13-56
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:33:13-45
+activity#com.solutions.secondorder.SOSSteelBeamLite.SectionsActivity
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:38:9-42:59
+	android:screenOrientation
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:41:13-50
+	android:label
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:40:13-60
+	android:theme
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:42:13-56
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:39:13-45
+activity#com.solutions.secondorder.SOSSteelBeamLite.DimensionsActivity
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:43:9-47:59
+	android:screenOrientation
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:46:13-50
+	android:label
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:45:13-62
+	android:theme
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:47:13-56
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:44:13-47
+activity#com.solutions.secondorder.SOSSteelBeamLite.PropertiesActivity
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:48:9-52:59
+	android:screenOrientation
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:51:13-50
+	android:label
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:50:13-62
+	android:theme
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:52:13-56
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:49:13-47
+activity#com.solutions.secondorder.SOSSteelBeamLite.ContactUs
+ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:53:9-57:59
+	android:screenOrientation
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:56:13-50
+	android:label
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:55:13-62
+	android:theme
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:57:13-56
+	android:name
+		ADDED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml:54:13-38
+uses-sdk
+INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:design:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/design/24.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.1/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:recyclerview-v7:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.1.1/AndroidManifest.xml:21:5-43
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:24.1.1] /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.1/AndroidManifest.xml:23:9-51
+	android:targetSdkVersion
+		INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ranialjondi/AndroidStudioProjects/sossteelbeamsuite/app/src/main/AndroidManifest.xml

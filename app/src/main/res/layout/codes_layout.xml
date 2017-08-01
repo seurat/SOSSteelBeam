@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blacktexture">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:background ="@drawable/background02">
+        <LinearLayout
+            android:id="@+id/widget128"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/grey_background_piece"
+            android:layout_weight=".1">
+
+            <com.solutions.secondorder.SOSSteelBeamLite.NavigationView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:numDots="OneDot"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/dark_background_piece"
+            android:layout_weight=".373"
+            >
+            <com.solutions.secondorder.SOSSteelBeamLite.ScaledImageView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight=".25"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:padding="@dimen/icon_horizontal_margin"
+                android:gravity="center"
+                android:clickable="true"
+                android:background="@null"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                app:image_id="@drawable/text_codes"
+                />
+            <ImageButton
+                android:id="@+id/image_detail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".8"
+                android:gravity="center"
+                android:paddingLeft="@dimen/icon_horizontal_margin"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="32dp"
+                android:clickable="true"
+                android:background="@null"
+                android:src="@drawable/image_calendar"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                />
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/sections_table"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".527"
+            android:background="@drawable/blacktexture"
+            android:layout_gravity="center_vertical">
+                <ListView
+                    android:id = "@+id/list_dbs_lv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

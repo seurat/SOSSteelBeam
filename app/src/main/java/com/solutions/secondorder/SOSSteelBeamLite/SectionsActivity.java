@@ -118,7 +118,9 @@ public class SectionsActivity extends Activity implements AttributeProvider {
         return ((SOSSteelBeamsApplication) getApplication()).getDatabaseName();
     }
 
-
+    public String getShape() {
+        return ((SOSSteelBeamsApplication) getApplication()).getShape();
+    }
     //Get extra; set attribute of SectionsLayout on launch; in Sections layout,set button effects ;
 
 }

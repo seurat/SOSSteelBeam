@@ -24,11 +24,13 @@ public class Keys {
 
     //any numbers regarding measurements such as lookup range in inches
     double lookupRange = .125;
+    double lookupRangeTight = .0625;
+    List<String> tightSections = Arrays.asList("tf", "tnom", "t");
 
-    String[] arrayDatabases = {"AISC14.1 (2013)","AISC13 (2005)","ASD9 (1989)","Historical (1873-1952)",
-            "ASD5 (1962)", "LRFD1 (1986)", "ASD6 (1964)",
-            "LRFD2 (1994)", "ASD7 (1970)", "LRFD3 (2001)",
-            "ASD8 (1980)"};
+
+    String[] arrayDatabases = {"AISC14.1 (2013)","AISC13 (2005)","LRFD3 (2001)", "LRFD2 (1994)", "ASD9 (1989)",
+            "LRFD1 (1986)", "ASD8 (1980)",
+            "ASD7 (1970)","ASD6 (1964)", "ASD5 (1962)","Historical (1873-1952)"};
 
     /**
      * takes labels from DatabaseActivity screen and returns file name of corresponding database.
@@ -65,6 +67,7 @@ public class Keys {
 
     //Stringified versions of same
     String lookupRangeSQL = String.valueOf(lookupRange);
+    String lookupRangeTightSQL = String.valueOf(lookupRangeTight);
 
     //intent keys for different extra values in Android intents.
     String intent_shapes = "shapes";
@@ -74,6 +77,7 @@ public class Keys {
     String intent_dimensions_sqr_flag = "dimensions hss_sqr flag";
     String intent_properties = "properties";
     String intent_databases = "database";
+
     //Shape Family Names
     String i_shape = "i";
     String tube_shape = "tube";
@@ -97,12 +101,12 @@ public class Keys {
 
 
     //Shape pictures families
-    List<String> pipe_sections = Arrays.asList(hss_round_section, pipe_section);
-    List<String> i_sections = Arrays.asList("w", "m", "s", "hp");
-    List<String> l_sections = Arrays.asList(two_l_section, "l");
-    List<String> tube_sections = Arrays.asList(hss_rect_section, hss_sqr_section);
-    List<String> c_sections = Arrays.asList("c", "mc");
-    List<String> t_sections = Arrays.asList("wt", "mt", "st", two_l_section);
+    List<String> pipe_sections = Arrays.asList(hss_round_section, pipe_section, "p", "xp", "xxp");
+    List<String> i_sections = Arrays.asList("w", "m", "s", "hp", "b", "bcb", "bj", "bl", "cb", "g", "h","s","wf", "wfb","wfcb","i", "j","jr","jrc","lwf","m");
+    List<String> l_sections = Arrays.asList("l");
+    List<String> tube_sections = Arrays.asList(hss_rect_section, hss_sqr_section,"st r","st s");
+    List<String> c_sections = Arrays.asList("c", "mc", "jru", "u");
+    List<String> t_sections = Arrays.asList("wt", "mt", "st", "st b", "st i", "st jr", "st m", "st wf", "t fs");
 
     //determines the section family of the given section for the purposes of selecting graphics
     // for their dimensions pages.
@@ -129,7 +133,7 @@ public class Keys {
 
     protected void setDetailFromShape(ImageView detail, String section) {
         String shape = shapeInterpreter(section);
-        switch (shape) {
+        switch (section) {
             case "i":
                 //i
                 //sections_table = (TableLayout) findViewById(R.id.sections_table);
@@ -141,10 +145,7 @@ public class Keys {
                 break;
             case "tube":
                 //tube
-                if(section.equalsIgnoreCase(hss_sqr_section))
-                    detail.setImageResource(R.drawable.image_tube_square_detail);
-                if(section.equalsIgnoreCase(hss_rect_section))
-                    detail.setImageResource(R.drawable.image_tube_detail);
+                detail.setImageResource(R.drawable.image_tube_detail);
                 break;
             case "c":
                 //c
@@ -152,6 +153,7 @@ public class Keys {
                 break;
             case "t":
                 //t
+                Log.e(TAG, "T shape clicked");
                 detail.setImageResource(R.drawable.image_t_detail);
                 break;
             case "pipe":
@@ -165,6 +167,30 @@ public class Keys {
             default:
                 Log.e(TAG, "Could not recognize shape" + shape);
                 break;
+        }
+    }
+
+    /**
+     * Determines which shape ids are going to be queried in dimensions.
+     *
+     * @param shape
+     */
+    protected List<String> getSectionsFromShape(String shape) {
+        switch (shape) {
+            case "i":
+                return i_sections;
+            case "l":
+                return l_sections;
+            case "tube":
+                return tube_sections;
+            case "c":
+                return c_sections;
+            case "t":
+                return t_sections;
+            case "pipe":
+                return pipe_sections;
+            default:
+                return null;
         }
     }
 
@@ -188,12 +214,33 @@ public class Keys {
             return " WHERE Shape LIKE '" + section + "' " + ifHSSRCompareBHt;
     }
 
-    public String specifyDimRangeString(String dim, String param) {
-        return " AND " + dim+" BETWEEN "+param+"-"+lookupRangeSQL+" AND "+param+"+"+lookupRangeSQL;
+    //returns section specifier component of SQL query in form of "...WHERE Shape LIKE Section1, etc...
+    public String sqlSectionsString(String shape) {
+        List<String> sections = getSectionsFromShape(shape);
+        Log.e(TAG, "list is size "+sections.size());
+        StringBuilder sectionsStringBuilder = new StringBuilder("WHERE (");
+
+        for(int i = 0; i<sections.size();i++) {
+            sectionsStringBuilder.append(" Shape LIKE \'");
+            sectionsStringBuilder.append(sections.get(i));
+            if(((i+1)<sections.size()))
+                sectionsStringBuilder.append("\' OR");
+        }
+        sectionsStringBuilder.append("\')");
+        String sqlQuery = sectionsStringBuilder.toString();
+        Log.e(TAG, sqlQuery);
+        return sqlQuery;
     }
 
-    public String queryByBothString(String var1, String val1, String var2, String val2) {
-        return specifyDimRangeString(var1, val1) + " " + specifyDimRangeString(var2, val2);
+
+    public String sqlDimRangeString(String dim, String param) {
+        if(tightSections.contains(dim))
+            return " " + dim+" BETWEEN "+param+"-"+lookupRangeTightSQL+" AND "+param+"+"+lookupRangeTightSQL+" ";
+        else return " " + dim+" BETWEEN "+param+"-"+lookupRangeSQL+" AND "+param+"+"+lookupRangeSQL+" ";
+    }
+
+    public String sqlQueryByBothString(String var1, String val1, String var2, String val2) {
+        return sqlDimRangeString(var1, val1) + " " + sqlDimRangeString(var2, val2) + " ";
     }
 
 }

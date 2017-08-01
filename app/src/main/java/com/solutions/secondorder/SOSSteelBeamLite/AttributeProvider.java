@@ -13,4 +13,5 @@ public interface AttributeProvider {
     public boolean isHSSSqr();
     public void goBack();
     public String getDatabaseName();
+    public String getShape();
 }

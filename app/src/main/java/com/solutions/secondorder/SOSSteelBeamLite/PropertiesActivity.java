@@ -39,5 +39,8 @@ public class PropertiesActivity extends Activity implements AttributeProvider{
         return ((SOSSteelBeamsApplication) getApplication()).getDatabaseName();
     }
 
+    public String getShape() {
+        return ((SOSSteelBeamsApplication) getApplication()).getShape();
+    }
 
 }

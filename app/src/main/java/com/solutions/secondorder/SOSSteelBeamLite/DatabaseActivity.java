@@ -12,26 +12,27 @@ import android.widget.TextView;
 import java.util.Arrays;
 import java.util.List;
 
-public class DatabaseActivity extends Activity {
+public class DatabaseActivity extends Activity implements AttributeProvider{
     String TAG = "DatabaseActivity";
     Keys keys = Keys.getInstance();
     boolean isHSSSqr;
     ListView list_dbs_lv;
     ArrayAdapter<String> adapter;
+
+
     List<String> listDatabases;
-    String[] arrayDatabases = {"AISC14.1 (2013)","AISC13 (2005)","ASD9 (1989)","Historical (1873-1952)",
-            "ASD5 (1962)", "LRFD1 (1986)", "ASD6 (1964)",
-            "LRFD2 (1994)", "ASD7 (1970)", "LRFD3 (2001)",
-            "ASD8 (1980)"};
+    String[] arrayDatabases = {"AISC14.1 (2013)","AISC13 (2005)","LRFD3 (2001)", "LRFD2 (1994)", "ASD9 (1989)",
+            "LRFD1 (1986)", "ASD8 (1980)",
+            "ASD7 (1970)","ASD6 (1964)", "ASD5 (1962)","Historical (1873-1952)"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.databases_layout);
+        setContentView(R.layout.codes_layout);
         listDatabases =Arrays.asList(arrayDatabases);
         list_dbs_lv = (ListView) findViewById(R.id.list_dbs_lv);
         adapter = new ArrayAdapter<String>(getApplicationContext(),
-                R.layout.property_label, R.id.property_label, listDatabases);
+                R.layout.property_label, R.id.property_label, keys.arrayDatabases);
 
         list_dbs_lv.setAdapter(adapter);
 
@@ -49,6 +50,35 @@ public class DatabaseActivity extends Activity {
             }
         });
 
+    }
+    @Override
+    public String getAttributeFromActivity() {
+        return null;
+    }
+
+    @Override
+    public void screenDispatch(int button) {
+
+    }
+
+    @Override
+    public boolean isHSSSqr() {
+        return false;
+    }
+
+    @Override
+    public void goBack() {
+        finish();
+    }
+
+    @Override
+    public String getDatabaseName() {
+        return null;
+    }
+
+    @Override
+    public String getShape() {
+        return null;
     }
 
 }

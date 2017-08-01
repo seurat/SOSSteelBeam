@@ -69,7 +69,7 @@ public class PropertiesLayout extends LinearLayout {
 
 
 
-        dbHelper = new DatabaseHelper(context.getApplicationContext(), propertiesActivity.getDatabaseName());
+        dbHelper = new DatabaseHelper(context.getApplicationContext(), propertiesActivity.getDatabaseName()+".sqlite");
         properties = "W, A, d, b t, kdes, kdet, x, y, xp, yp, Ix, "+
                 "Zx, Sx, rx, Iy, Zy, Iz, Sy, ry, Iz, rz, Sz, J, Cw, ro, H, "+
                 "Qs, Iw, zA, zC, wA, wB, wC, SwA, SwC, SzA, SzB, SzC";
@@ -83,11 +83,9 @@ public class PropertiesLayout extends LinearLayout {
         beam_label = propertiesActivity.getAttributeFromActivity();
         isHSSSqr = propertiesActivity.isHSSSqr();
         //returns section (called Shape in the SQL table) that beam label is specifying.
-        section = dbHelper.getShapeByBeamLabel(beam_label);
-        if(keys.tube_sections.contains(section)&&section.equalsIgnoreCase(keys.hss_sqr_section))
-            section = keys.hss_sqr_section;
-        Log.e(TAG, "Where is it " + section);
-        keys.setDetailFromShape(detail, section);
+        shape = propertiesActivity.getShape();
+        Log.e(TAG, "Where is it " + shape);
+        keys.setDetailFromShape(detail, shape);
         //Get name of section from string. Prepare to possibly range over section within two inches.
         if (beam_label != null) {
             list_properties = dbHelper.getThoseItemProperties(properties, beam_label);

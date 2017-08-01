@@ -56,7 +56,7 @@ public class DimensionsLayout extends LinearLayout {
         detail = (ImageButton) findViewById(R.id.image_detail);
         //TODO figure out where these activities are getting generated from so I can make use of these views.
         section = dimensionsActivity.getAttributeFromActivity();
-        keys.setDetailFromShape(detail, section);
+        keys.setDetailFromShape(detail, dimensionsActivity.getShape());
         /*
         switch (shape) {
             case "i":
